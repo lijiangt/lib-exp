@@ -56,6 +56,7 @@ public class Main {
 		// -28 -72 -124 49 -92 55
 		System.out.println();
 		System.out.println();
+		printByte("文", "UTF-8");
 		printByte("文", "GB2312");
 		// 2
 		// 63 63
