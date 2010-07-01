@@ -3,7 +3,7 @@ import java.io.UnsupportedEncodingException;
 public class Main {
 	private static void printByte(String s, String charset)
 			throws UnsupportedEncodingException {
-		byte[] by = new String(s.getBytes(), charset).getBytes(charset);
+		byte[] by = s.getBytes(charset);//(new String(s.getBytes(), charset)).getBytes(charset);
 		System.out.println("" + by.length + " ");
 		for (byte b : by) {
 			System.out.print(" " + b);
@@ -23,7 +23,7 @@ public class Main {
 		//
 		printByte("a", "UTF-16");
 		// 4
-		// -2 -1 -1 -3
+		// -2 -1 0 97
 		//
 		printByte("a", "GB2312");
 		// 1
@@ -43,32 +43,49 @@ public class Main {
 		// 3
 		// -28 -72 -83
 		printByte("中", "UTF-16");
-		// 6
-		// -2 -1 -28 -72 -1 -3
+		// 4
+		// -2 -1 78 45
 		printByte("中", "GB2312");
-		// 3
-		// -28 -72 63
+		// 2
+		// -42 -48
 		printByte("中", "GBK");
-		// 3
-		// -28 -72 63
+		// 2
+		// -42 -48
 		printByte("中", "GB18030");
-		// 6
-		// -28 -72 -124 49 -92 55
+		// 2
+		//  -42 -48
 		System.out.println();
 		System.out.println();
 		printByte("文", "UTF-8");
-		printByte("文", "GB2312");
-		// 2
-		// 63 63
-		printByte("文", "GBK");
 		// 3
-		// -26 -106 63
+		//  -26 -106 -121
+		printByte("文", "UTF-16");
+		// 4 
+		// -2 -1 101 -121
+		printByte("文", "GB2312");
+		// 3
+		//  -26 -106 -121
+		printByte("文", "GBK");
+		// 2
+		//  -50 -60
 		printByte("文", "GB18030");
-		// 6
-		// -26 -106 -124 49 -92 55
+		// 2
+		//  -50 -60
 		// String s = "abcd01中文测试";
 		// printByte(s,"UTF-8");
 		// printByte(s,"UTF-16");
 	}
-
+	
+	
+	public static void main2(String[] args) throws UnsupportedEncodingException {
+		byte[] by = "文".getBytes("GBK");
+		System.out.println("" + by.length + " ");
+		for (byte b : by) {
+			System.out.print(" " + b);
+		}
+		System.out.println();
+		System.out.println(new String(by,"GBK"));
+//		System.out.println("文".length());
+//		System.out.println(new String(new String("文".getBytes("GBK"),"GBK").getBytes("GBK")));
+	}
 }
