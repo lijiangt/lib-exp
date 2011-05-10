@@ -10,11 +10,20 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-  	<servlet-name>TestServlet</servlet-name>
-  	<servlet-class>TestServlet</servlet-class>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>TestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>TestServlet</servlet-name>
-  	<url-pattern>/t/*</url-pattern>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/t/*</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>TestFilter</display-name>
+    <filter-name>TestFilter</filter-name>
+    <filter-class>TestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>TestFilter</filter-name>
+    <url-pattern>/TestFilter</url-pattern>
+  </filter-mapping>
 </web-app>
