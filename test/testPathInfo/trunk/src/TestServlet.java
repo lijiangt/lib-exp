@@ -37,12 +37,17 @@ import javax.servlet.http.HttpServletResponse;
 	 */
 	public void service(HttpServletRequest request, HttpServletResponse res)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		res.setCharacterEncoding("UTF-8");
 		PrintWriter out = res.getWriter();
 		out.println("<html>");
 		out.println("<head>");
+		out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
 		out.println("<title>Test</title>");
 		out.println("</head>");
 		out.println("<body>");
+		out.println("request.getAttribute(\"test\"):"+request.getAttribute("test"));
+		out.println("<br />");
 		out.println("request.getRequestURI():"+request.getRequestURI());
 		out.println("<br />");
 		out.println("request.getRequestURL().toString():"+request.getRequestURL().toString());
