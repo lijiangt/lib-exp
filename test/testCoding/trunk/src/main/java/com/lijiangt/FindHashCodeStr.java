@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * create database hashcode default character set utf8 default collate utf8_bin;
- * create table HASH_CODE(STR varchar(255) not null,HASH Integer not null);
+ * create table HASH_CODE(STR varchar(255) not null,HASH Integer not null) TYPE=innodb;
  * 
  * 
  * select c.HASH,count(1) from HASH_CODE c where LEFT(c.STR,1) not in ('+','/','?','%','#','&',' ') and RIGHT(c.STR,1) not in ('+','/','?','%','#','&',' ') group by c.HASH having count(1)>3;
@@ -54,13 +54,16 @@ public class FindHashCodeStr {
 	public void find(int length) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String url = "jdbc:mysql://localhost/hashcode?useUnicode=true&characterEncoding=UTF-8";
+			String url = "jdbc:mysql://localhost/hashcode?useUnicode=true&characterEncoding=GBK";
 			conn = DriverManager.getConnection(url, "root", "");
 			String sql = "INSERT INTO HASH_CODE(STR, HASH) VALUES(?,?)";
 			ps = conn.prepareStatement(sql);
 			for(String s:composite(length)){
 				save(s,s.hashCode());
 			}
+//			for(String s:new String[]{"和平、发展、合作是时代的呼唤","我相信，只要各国人民戮力同心、同舟共济，我们一定能够战胜前进道路上的各种困难和风险，在推动建设持久和平、共同繁荣的和谐世界的征程上不断迈出新的步伐。"}){
+//				save(s,s.hashCode());
+//			}
 			conn.close();
 		} catch (InstantiationException e) {
 			e.printStackTrace();

@@ -53,7 +53,7 @@ public class App {
 		}
 		System.out.println("Put To Map Count: "+(0.0+System.currentTimeMillis()-start)/1000);
 		start = System.currentTimeMillis();
-		Integer i = m.get("");
+		Integer i = m.get(l.get(l.size()-1));
 		System.out.println("Get Form Map Count: "+(0.0+System.currentTimeMillis()-start)/1000);
 	}
 	
@@ -68,9 +68,9 @@ public class App {
 //			System.out.println("<input name=\""+str+"\" value=\"0\" type=\"hidden\"/>");
 			if(first){
 				first = false;
-				System.out.print("		  data:'"+str+"=");
+				System.out.print("		  data:'"+str+"=x");
 			}else{
-				System.out.print("&"+str+"=");
+				System.out.print("&"+str+"=5");
 			}
 		}
 		System.out.print("',");
