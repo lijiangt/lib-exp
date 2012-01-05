@@ -1,0 +1,31 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	<soap:Header>
+		<wsse:Security
+			xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+			xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+			soap:mustUnderstand="1">
+			<wsu:Timestamp wsu:Id="TS-4">
+				<wsu:Created>2012-01-05T01:51:28.291Z</wsu:Created>
+				<wsu:Expires>2012-01-05T01:56:28.291Z</wsu:Expires>
+			</wsu:Timestamp>
+			<wsse:UsernameToken wsu:Id="UsernameToken-3">
+				<wsse:Username>1111</wsse:Username>
+				<wsse:Password
+					Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">l0xUMu9tC7tfNWbRjk1cF8Vqwk0=</wsse:Password>
+				<wsse:Nonce
+					EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">5sRqWzW0hzrnI+OymMm9xw==</wsse:Nonce>
+				<wsu:Created>2012-01-05T01:51:28.291Z</wsu:Created>
+			</wsse:UsernameToken>
+		</wsse:Security>
+	</soap:Header>
+	<soap:Body>
+		<ns2:sayHello xmlns:ns2="http://service.test.ipinyou.com/">
+			<arg0>Silver Lee</arg0>
+			<arg1>
+				<desc>ddeesscc</desc>
+				<priority>5</priority>
+				<test>tteesstt</test>
+			</arg1>
+		</ns2:sayHello>
+	</soap:Body>
+</soap:Envelope>
