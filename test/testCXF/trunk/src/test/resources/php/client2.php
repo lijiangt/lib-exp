@@ -7,6 +7,7 @@
 // http://code.google.com/p/wse-php/source/clones
 // http://www.cdatazone.org/files/soap-wsa-example.phps
 // http://www.cdatazone.org/index.php?/categories/1-PHP
+// WSO2: http://wso2.org/library/2814    http://www.dimuthu.org/blog/2008/09/16/php-data-services-with-ws-security/
 ini_set("soap.wsdl_cache_enabled", "0");  
 //require_once 'SOAP/Client.php';
 //$wsdl = new SOAP_WSDL("http://localhost:8080/test-cxf/service/HelloWorld?wsdl");
