@@ -15,7 +15,7 @@
  -->
 
 <jaxws:client id="client"
-		address="http://192.168.1.111:8080/test-cxf/service/HelloWorld"
+		address="http://192.168.1.111:8080/testCXF/service/HelloWorld"
 		serviceClass="com.ipinyou.test.service.HelloWorld">
 		<jaxws:outInterceptors>
 			<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor" />

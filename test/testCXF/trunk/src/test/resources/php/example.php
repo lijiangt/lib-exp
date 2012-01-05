@@ -19,7 +19,7 @@ class mySoap extends SoapClient {
 }
 
 
-$wsdl = "http://192.168.1.111:8080/test-cxf/service/HelloWorld?wsdl";
+$wsdl = "http://localhost:8080/testCXF/service/HelloWorld?wsdl";
 
 $soapclient = new mySoap($wsdl, array('trace'=>1));
 
