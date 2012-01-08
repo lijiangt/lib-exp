@@ -24,6 +24,15 @@
          }
       %>
       </table>
-
+request.getContentType(): <%=request.getContentType()%><br />
+request.getCharacterEncoding(): <%=request.getCharacterEncoding()%><br />
+request.getLocale(): <%=request.getLocale()%><br />
+request.getLocalName(): <%=request.getLocalName()%><br />
+request.getLocalAddr(): <%=request.getLocalAddr()%><br />
+request.getLocalPort(): <%=request.getLocalPort()%><br />
+request.getProtocol(): <%=request.getProtocol()%><br />
+request.getRemoteAddr(): <%=request.getRemoteAddr()%><br />
+request.getRemoteHost(): <%=request.getRemoteHost()%><br />
+request.getRemotePort(): <%=request.getRemotePort()%><br />
 </body>
 </html>
