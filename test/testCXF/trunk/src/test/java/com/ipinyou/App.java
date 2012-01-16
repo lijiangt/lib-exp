@@ -1,6 +1,10 @@
 package com.ipinyou;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ipinyou.test.service.Hello;
@@ -27,6 +31,12 @@ public class App {
 		r = client.sayHello("Silver Lee", new Hello("tteesstt","ddeesscc",(byte)5));
 		System.out.println("result:" + r.getResult());
 		System.out.println("desc:  " + r.getDesc());
+		
+		HashMap<String,ArrayList<String>> o =client.sayMap("hello");
+		for(Map.Entry<String,ArrayList<String>> e:o.entrySet()){
+			System.out.println(e.getKey()+": "+e.getValue().size());
+		}
+		
 
 	}
 	

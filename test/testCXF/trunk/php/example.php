@@ -38,6 +38,17 @@ $res = $soapclient->sayHi(array('arg0'=>"Silver Lee"));
 print_r($res->return->result);
 print_r($res->return->desc);
 //    var_dump($res);
+
+$res = $soapclient->sayMap(array('arg0'=>"Silver"));
+echo "<pre>";
+print_r($res->return);
+echo "</pre>";
+echo "<br />";
+print_r($res->return->entry);
+echo "<br />";
+$arr = $res->return->entry;
+print_r($arr[0]->key);
+echo "<br />";
 } catch (SoapFault $fault) {
     print("Fault string: " . $fault->faultstring . "\n");
     print("Fault code: " . $fault->detail->WebServiceException->code . "\n");

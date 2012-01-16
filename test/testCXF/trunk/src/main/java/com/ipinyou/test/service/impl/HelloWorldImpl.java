@@ -3,6 +3,9 @@
  */
 package com.ipinyou.test.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.jws.WebService;
 
 import com.ipinyou.test.service.Hello;
@@ -40,6 +43,26 @@ public class HelloWorldImpl implements HelloWorld {
 		System.err.println(text);
 		return new Result("Hello " + text, h.toString());
 	}
+
+
+	/* (non-Javadoc)
+	 * @see com.ipinyou.test.service.HelloWorld#sayMap(java.lang.String)
+	 */
+	@Override
+	public HashMap<String, ArrayList<String>> sayMap(String h) {
+		HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+		ArrayList<String> l = new ArrayList<String>();
+		l.add("h: "+h+1);
+		l.add("h: "+h+2);
+		map.put("hello",l);
+		l = new ArrayList<String>();
+		l.add("w: "+h+1);
+		l.add("w: "+h+2);
+		map.put("world",l);
+		return map;
+	}
+
+
 	
 	
 
