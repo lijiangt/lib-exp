@@ -2,6 +2,7 @@ package com.ipinyou;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,7 +37,8 @@ public class App {
 		for(Map.Entry<String,ArrayList<String>> e:o.entrySet()){
 			System.out.println(e.getKey()+": "+e.getValue().size());
 		}
-		
+		Date d = client.sayTime(new Date());
+		System.out.println(d);
 
 	}
 	

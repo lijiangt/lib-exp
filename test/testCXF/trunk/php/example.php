@@ -49,6 +49,9 @@ echo "<br />";
 $arr = $res->return->entry;
 print_r($arr[0]->key);
 echo "<br />";
+#$res = $soapclient->sayTime(array('arg0'=>time()));
+$res = $soapclient->sayTime(array('arg0'=>strtotime("2006-05-25 17:50:38")));
+print_r($res->return);
 } catch (SoapFault $fault) {
     print("Fault string: " . $fault->faultstring . "\n");
     print("Fault code: " . $fault->detail->WebServiceException->code . "\n");

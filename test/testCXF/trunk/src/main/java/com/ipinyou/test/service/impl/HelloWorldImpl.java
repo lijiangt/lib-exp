@@ -4,6 +4,7 @@
 package com.ipinyou.test.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.jws.WebService;
@@ -60,6 +61,15 @@ public class HelloWorldImpl implements HelloWorld {
 		l.add("w: "+h+2);
 		map.put("world",l);
 		return map;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see com.ipinyou.test.service.HelloWorld#sayTime(java.util.Date)
+	 */
+	@Override
+	public Date sayTime(Date d) {
+		return new Date(d.getTime()+3600l*25*1000);
 	}
 
 
