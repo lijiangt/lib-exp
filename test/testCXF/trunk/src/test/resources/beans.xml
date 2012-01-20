@@ -4,35 +4,32 @@
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
-<!-- 
-	<bean id="client" class="com.ipinyou.test.service.HelloWorld" factory-bean="clientFactory"
-		factory-method="create" />
-
-	<bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
-		<property name="serviceClass" value="com.ipinyou.test.service.HelloWorld" />
-		<property name="address" value="http://localhost:8080/test-cxf/service/HelloWorld" />
+	<!-- <bean id="client" class="com.ipinyou.test.service.HelloWorld" factory-bean="clientFactory" 
+		factory-method="create" /> <bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean"> 
+		<property name="serviceClass" value="com.ipinyou.test.service.HelloWorld" 
+		/> <property name="address" value="http://localhost:8080/test-cxf/service/HelloWorld" 
+		/> </bean> -->
+	<bean id="loggingOutInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+	<!-- SAAJInInterceptor只在CXF是2.0.X版本时或之前版本时才是必须的 -->
+	<!-- <bean class="org.apache.cxf.binding.soap.saaj.SAAJInInterceptor"/> -->
+	<bean id="wSS4JOutInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+		<constructor-arg>
+			<map>
+				<entry key="action" value="UsernameToken Timestamp" />
+				<entry key="passwordType" value="PasswordDigest" />
+				<entry key="user" value="FHDServer" />
+				<entry key="passwordCallbackRef">
+					<bean class="com.ipinyou.test.service.ClientPasswordCallback" />
+				</entry>
+			</map>
+		</constructor-arg>
 	</bean>
- -->
-
-<jaxws:client id="client"
+	<jaxws:client id="client"
 		address="http://127.0.0.1:8080/testCXF/service/HelloWorld"
 		serviceClass="com.ipinyou.test.service.HelloWorld">
 		<jaxws:outInterceptors>
-			<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
-			<!-- SAAJInInterceptor只在CXF是2.0.X版本时或之前版本时才是必须的 -->
-			<!-- <bean class="org.apache.cxf.binding.soap.saaj.SAAJInInterceptor"/> -->
-			<bean class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
-				<constructor-arg>
-					<map>
-						<entry key="action" value="UsernameToken Timestamp" />
-						<entry key="passwordType" value="PasswordDigest" />
-						<entry key="user" value="FHDServer" /> 
-						<entry key="passwordCallbackRef">
-							<bean class="com.ipinyou.test.service.ClientPasswordCallback"/>
-						</entry>
-					</map>
-				</constructor-arg>
-			</bean>
+			<ref bean="loggingOutInterceptor" />
+			<ref bean="wSS4JOutInterceptor" />
 		</jaxws:outInterceptors>
 	</jaxws:client>
 
