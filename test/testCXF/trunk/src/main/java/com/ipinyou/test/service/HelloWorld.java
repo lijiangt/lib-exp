@@ -22,4 +22,6 @@ public interface HelloWorld {
 	HashMap<String,ArrayList<String>> sayMap(String h);
 	
 	Date sayTime(Date d);
+	
+	String uploadAttachment(Attachment a);
 }
