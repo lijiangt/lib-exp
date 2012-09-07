@@ -1,13 +1,19 @@
 package com.ipinyou;
 
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.ipinyou.test.service.Attachment;
 import com.ipinyou.test.service.Hello;
 import com.ipinyou.test.service.HelloWorld;
 import com.ipinyou.test.service.Result;
@@ -40,6 +46,11 @@ public class App {
 		Date d = client.sayTime(new Date());
 		System.out.println(d);
 
+		DataSource source = new FileDataSource(new File("/home/lijt/tmp/t/uploadfile"));
+		Attachment a = new Attachment();
+		a.setFileData(new DataHandler(source));
+		a.setTitle("文件上传");
+		System.out.println(client.uploadAttachment(a));
 	}
 	
 

@@ -9,9 +9,9 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
-	
+
 	<bean id="sAAJInInterceptor" class="org.apache.cxf.binding.soap.saaj.SAAJInInterceptor" />
-	
+
 	<bean id="wWSS4JInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
 		<constructor-arg>
 			<map>
@@ -24,14 +24,17 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 			</map>
 		</constructor-arg>
 	</bean>
-	
+
 	<bean id="hello" class="com.ipinyou.test.service.impl.HelloWorldImpl" />
 
 	<jaxws:endpoint id="helloWorld" implementor="#hello"
 		address="/HelloWorld">
+		<jaxws:properties>
+				<entry key="mtom-enabled" value="true" />
+			</jaxws:properties>
 		<jaxws:inInterceptors>
-            <ref bean="sAAJInInterceptor"/>
-            <ref bean="wWSS4JInInterceptor"/>
+			<ref bean="sAAJInInterceptor" />
+			<ref bean="wWSS4JInInterceptor" />
 		</jaxws:inInterceptors>
 
 

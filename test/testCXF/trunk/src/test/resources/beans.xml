@@ -31,6 +31,9 @@
 			<ref bean="loggingOutInterceptor" />
 			<ref bean="wSS4JOutInterceptor" />
 		</jaxws:outInterceptors>
+		<jaxws:properties>
+			<entry key="mtom-enabled" value="true" />
+		</jaxws:properties>
 	</jaxws:client>
 
 </beans>
